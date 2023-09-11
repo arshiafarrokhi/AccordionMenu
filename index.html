@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/master.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <ul class="acc">
+        <li>
+            <div class="row" onclick="toggle(this)" data-num="0">
+                <h2>هاست و دامنه چیست؟</h2>
+                <span><i class="bi bi-arrow-down"></i></span>
+            </div>
+            <p data-status="off">هاست در واقع یک کامپیوتر همواره روشن است که اطلاعات سایت شما به صورت شبانه روزی بر روی
+                آن قابل دسترس کاربران شما می باشد. میزان فضای هاست ارتباط مستقیم با میزان اطلاعاتی دارد که می خواهید بر
+                روی سایت خود قرار دهید. اما دامنه همان آدرس سایت می باشد. برای مثال دامنه سایت ما وب پویا webpouya.com
+                است.</p>
+        </li>
+        <li>
+            <div class="row" onclick="toggle(this)" data-num="1">
+                <h2>مزایای بروزرسانی وبسایت چیست؟</h2>
+                <span class="icon"><i class="bi bi-arrow-down"></i></span>
+            </div>
+            <p data-status="off"> وب پویا در طی مدت پشتیبانی خود، سایت شما را در صورت نیاز بروزرسانی می کند. اما چرا باید یک وب سایت بروزرسانی شود؟ به طورکلی وردپرس دائما در حال تغییر و بروزرسانی می باشد. در بسیاری از مواقع برای اینکه افزونه ها و هسته اصلی وردپرس با یکدیگر تداخل نداشته باشند، شما مجبور به بروزرسانی سایت هستید. علاوه بر این، بروزرسانی به موقع وردپرس سبب افزایش امنیت آن می شود.</p>
+        </li>
+        <li>
+            <div class="row" onclick="toggle(this)" data-num="2">
+                <h2>چرا از وردپرس استفاده کنیم؟</h2>
+                <span class="icon"><i class="bi bi-arrow-down"></i></span>
+            </div>
+            <p data-status="off">وردپرس یک سیستم مدیریت محتوا است که به سبب امکانات زیادی که دارد و از همه مهمتر به دلیل رایگان بودن آن مجبوبیت خاصی دارد. می توان گفت حدود 23 درصد از سایت های جهان بر پایه وردپرس نوشته شده اند. کاربری ساده این سیستم، تنوع قالب ها و صرفه جویی در هزینه نیز دیگر عوامل محبوبیت وردپرس است. ووکامرس هم افزونه فروشگاهی وردپرس است که با نصب آن روی سستم وردپرس سایت به یک فروشگاه اینترنتی حرفه ای تبدیل می شود. اگر قصد آشنایی بیشتر با این سیستم مدیریت محتوا را دارید، محتوا ووکامرس چیست؟ را مطالعه کنید.</p>
+        </li>
+    </ul>
+    <script>
+        let row = document.querySelectorAll('.row')
+
+        for (let i = 0; i < row.length; i++) {
+            let _height = row[i].nextElementSibling.clientHeight
+            row[i].nextElementSibling.setAttribute('data-h', _height)
+            row[i].nextElementSibling.style.height = '0'
+        }
+
+        function toggle(s) {
+            let _h = s.nextElementSibling.getAttribute('data-h')
+            let _status = s.nextElementSibling.getAttribute('data-status')
+
+            let _icon = s.children
+            _icon[1].classList.toggle('rot')
+
+
+            if (_status == 'off') {
+                s.nextElementSibling.style.height = _h + 'px'
+                s.nextElementSibling.setAttribute('data-status', 'on')
+
+            } else {
+                s.nextElementSibling.style.height = '0px'
+                s.nextElementSibling.setAttribute('data-status', 'off')
+            }
+
+
+
+            let num = s.getAttribute('data-num')
+            for (let i = 0; i < row.length; i++) {
+                if (i != num) {
+                    row[i].nextElementSibling.style.height = '0px'
+                    row[i].nextElementSibling.setAttribute('data-status', 'off')
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
